@@ -34,7 +34,7 @@
   
   Like what you see? NO
  
- Anyways,
+ Anyway,
   
   1. Clone the repo
   2 Go to settings.py in the folder "project"
