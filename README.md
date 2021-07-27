@@ -37,8 +37,8 @@
  Anyway,
   
   1. Clone the repo
-  2 Go to settings.py in the folder "project"
-  3. Add the database system you like ro leave as it is
+  2. Go to settings.py in the folder "project"
+  3. Add the database system you like(postgres/MySQL..) or leave as it is
   4. Create an admin account. Open terminal and enter ```python manage.py createsuperuser```
   5. In terminal/cmd and enter  ``` python manage.py runserver```
   6. Open the browser of your choice and enter whatever link  you get from the red marked area below, it could be different on your pc.
