@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="with=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+  <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+  <link href="{% static 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600&display=swap' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' %}">
+
+</head>
+<body>
+
+  <div class="box">
+    <div class="box-top">
+      <div class="top-text">
+        <h1>Sign Up</h1>
+      </div>
+      <form class="input-form" method="post">
+        {% csrf_token %}
+            <input type="email" name="email" id="inputEmail" class="input-field" placeholder="Email address" required autofocus>
+
+            <input type="text" name="username" id="inputUsername" class="input-field" placeholder="Username" required>
+  
+            <input type="password" name="password1" id="inputPassword1" class="input-field" placeholder="Password" required>
+
+            <input type="password" name="password2" id="inputPassword2" class="input-field" placeholder="Confirm password" required>
+            <input type="submit" class="submit-btn" value="Sign Up">
+            <div class="messages">
+            {% for field in registration_form %}
+              <p>
+                {% for error in field.errors %}
+                  <p >{{ error }}</p>
+                {% endfor %}
+              </p>
+            {% endfor %}
+            </div>
+            <div class="messg-n">
+            {% if registration_form.non_field_errors %}
+              <p>{{registration_form.non_field_errors}}</p>
+            {% endif %}
+            </div>
+                 
+      </form>
+    </div>
+  </div>
+  
+  
+  
+
+</body>
+</html>
+
+<<!-- input type="text" class="input-field"  name="username" placeholder="Username">
+          <input type="email" class="input-field"  name="email" placeholder="Email">
+          <input type="password" class="input-field"  name="password1" placeholder="Password">
+          <input type="password" class="input-field"  name="password2" placeholder="Confirm Password"> -->

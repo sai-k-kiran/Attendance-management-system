@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="with=device-width, initial-scale=1.0">
+  <title>Attendance</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+  <link href="{% static 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600&display=swap" rel="stylesheet' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' %}">
+</head>
+<body>
+  <section class="lecture-head">
+    <h1>{{lecture.name}} lecture</h1>
+    <p>Dated: {{lecture.date}}</p>
+  </section>
+          
+            
+            <div>
+              <form action="attendance" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="lecture_id" value="{{ lecture.id }}">
+              <table class="table-at"> 
+              <tr>
+                <th>Roll no</th>
+                <th>Name</th>
+                <th>Status</th>
+              </tr>
+              {% for stu in student %}
+              <tr style="border: 1px solid red;">
+                <td name="student_id">{{stu.roll_no}}</td>
+                <td>{{stu.name}}</td>
+                <td><input type="checkbox" name="status" id="status" value="{{ stu.id }}"></td>
+                <input type="submit" class="submit-at " value="Submit">
+              </tr>
+              {% endfor %}
+              </table>
+              </form>
+            </div>
+            <div>
+            
+            </div>
+          
+</body>
+</html>
+
+<!-- <select name="status" id="status">
+                      <option value="" selected>---------</option>
+                      <option value="absent">Absent</option>
+                      <option value="present">Present</option>
+                    </select> -->

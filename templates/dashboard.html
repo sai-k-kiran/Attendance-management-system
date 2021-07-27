@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="with=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+  <link href="{% static 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600&display=swap" rel="stylesheet' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' %}">
+</head>
+</head>
+<body>
+	<section class="lecture-head">
+		<h1>Welcome {{user.username}}</h1>
+		{{ date }}
+	
+		<div>
+			<h1 style="font-size: 25px; padding-top: 20px;">You have conducted total {{sum}} lectures</h2>
+		</div>
+		<div class="row">
+				<div class="course-col">
+					<a href="add_lecture" style="color: tomato; font-size: 20px; text-decoration: none;">Add a lecture</a>
+				</div>
+				<div class="course-col">
+					<a href="lectures" style="color: tomato; font-size: 20px; text-decoration: none;">My lectures</a>
+				</div>
+				<div class="course-col">
+					<a href="new_student" style="color: tomato; font-size: 20px; text-decoration: none;">Students</a>
+				</div>
+		</div>
+	</section>
+
+</body>
+</html>

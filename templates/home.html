@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="with=device-width, initial-scale=1.0">
+	<title>Home page</title>
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+	<link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+	<link href="{% static 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600&display=swap' %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' %}">
+
+</head>
+<body>
+	<section class="header" style="background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,8,30,0.7)), 
+	url({% static 'images/student.jpg' %})">
+		<nav>
+			<a href="/"><img src="{% static 'images/glow.png' %}" alt="dayCheck"></a>
+		<div class="nav-links" id="navLinks">
+			<i class="fa fa-times" onclick="hideMenu"></i>
+			<ul>
+				{% if user.is_authenticated %}
+				<li><a href="dashboard">{{user.username}}'s logs</a></li>
+				<li><a href="logout">Logout</a></li>
+				{% else %}
+				<li><a href="register">Register</a></li>
+				<li><a href="signin">Login</a></li>
+				
+				{% endif %}
+				<li><a href="about">About</a></li>
+				<li><a onclick='myFunction()'>Contact Us</a></li>
+			</ul>	
+		</div>
+		<i class="fa fa-bars" oncancel="showMenu"></i>
+		</nav>
+		<div class="text-box">
+			<h1>ONLINE ATTENDANCE TRACKER</h1>
+			<h3>A convenient way to track your student's attendance</h3>
+			<a href="about" class="hero-btn">Know more</a>
+		</div>
+	</section>
+	<!---------Features------------>
+	<section class="features">
+		<h1>FEATURES</h1>
+		<p>Enough to make your work easy</p>
+		<div class="row">
+			<div class="course-col">
+				<h3>Lecture logging</h3>
+				<p>Create as many lectures as you want and keep track of them easily with the simple and minimal UI</p>
+			</div>
+			<div class="course-col">
+				<h3>Attandance logging</h3>
+				<p>Set the status of the students in each class you take with a simple click</p>
+			</div>
+			<div class="course-col">
+				<h3>Tracking attendance</h3>
+				<p>See who attends your classes in in the lecture list</p>
+			</div>
+			
+		</div>
+	</section>
+	<!-----------A fillable contact form-------------->
+	<div id="scrollTo">
+	<section  class="contact">
+		<h1>CONTACT US</h1>
+		<p>Feel free to send a messsage</p>
+		<div  class="contact-box">
+			
+			<form action="" method="">
+				<input type="text" class="name" placeholder="John Smith">
+				<input type="text" class="email" placeholder="jSmith@abc.com">
+				<div class="input-row">
+					<div class="mssg">
+						<textarea rows="6" placeholder="Write your messsage"></textarea>
+					</div>
+				</div>
+				<button class="buttons">Send</button>
+			</form>
+			
+		</div>
+		
+	</section>
+	</div>
+
+	<!-------Javascript for menu toggle in mobile devices ----------->
+<script>
+	
+	function myFunction() {
+		var element = document.getElementById("scrollTo");
+    	element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+	}
+	var navLinks = document.getElementById('navLinks');	
+	funtion showMenu(){
+		navLinks.style.right="0"
+	}
+	funtion hideMenu(){
+		navLinks.style.right="-200px"
+	}
+</script>
+</body>
+</html>

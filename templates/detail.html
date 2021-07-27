@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="with=device-width, initial-scale=1.0">
+	<title>{{lecture.name}} Lecture</title>
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+	<link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+	<link href="{% static 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600&display=swap' %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' %}">
+
+</head>
+<body>
+	<section class="lecture-head">
+		<h1>{{lecture.name}} lecture</h1>
+		<p>Dated: {{lecture.date}}</p>
+	</section>
+	<div>
+		<table class="table-at"> 
+		  <tr>
+		    <th>Roll no</th>
+		    <th>Name</th>
+		    <th>Present</th>
+		  </tr>
+<!-- To fetch name of student with help of student_id in "status" table>>> Status.student.name OR in this case, attend refers to a particular lecture so >>> attend.student.name  See query.png in pictures folder-->
+		  	{% for item in attend %}
+		  <tr>
+		    <td>{{item.student.roll_no}}</td> 
+		    <td>{{item.student.name}}</td>
+		    <td>{{item.status}}</td>
+		    {% endfor %}
+		  </tr>
+ 		</table>
+ 	</div>
+</body>
+</html>
+
+		<!--  ------Worked one-----
+			{% for item in attend %}
+		  <tr>
+		    <td>{{item.student.roll_no}}</td> 
+		    <td>{{item.student.name}}</td>
+		    <td>{{item.status}}</td>
+		    {% endfor %} -->

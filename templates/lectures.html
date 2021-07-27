@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="with=device-width, initial-scale=1.0">
+  <title>My lectures</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+  <link href="{% static 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600&display=swap" rel="stylesheet' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' %}">
+</head>
+</head>
+<body>
+	<section class="lecture-head-l">
+		<h1>{{ user.username }}'s lectures</h1>
+		{{date}}
+		<button class="submit-btn-l"><a href="add_lecture" style="color:white; text-decoration:none;">Add a new lecture</a></button>
+		<h3 style="padding-top: 20px;">Here's a list of lectures you have conducted till now. Click on a lecture to see more about the lecture</h3>
+	</section>
+	{% for lect in Lect %}
+		<div class="rowl">
+				<div class="course-coll">
+					<div class="text-l">
+					<a href="{% url 'lecture_detail' lect.pk %}" style="text-decoration: none;"><h3>{{ lect.name }}<br>{{ lect.date }}</h3></a>
+					</div>
+				</div>
+			</div>
+	{% endfor %}
+	</section>
+	
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="with=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+  <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+  <link href="{% static 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600&display=swap' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' %}">
+
+</head>
+<body>
+   <div class="box-login">
+    <div class="box-top">
+      <div class="top-text">
+        <h1>Sign In</h1>
+      </div>
+      <form class="input-form" method="post" action="enter">
+        {% csrf_token %}
+          <input type="text" class="input-field"  name="username" placeholder="Username">
+          <input type="password" class="input-field"  name="password" placeholder="Password">
+          <div class="messages">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+          </div>
+          <input type="submit" class="submit-btn" value="Log In">       
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

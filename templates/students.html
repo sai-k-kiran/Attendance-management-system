@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+  <link href="{% static 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600&display=swap" rel="stylesheet' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' %}">
+</head>
+</head>
+<body>
+	<section class="lecture-head">
+		<h1>Student's list</h1>
+		<h1 style="font-size: 20px; padding-top: 40px;">Add a new student in your class</h1>
+	</section>
+		<section class="lect-form">
+		 <form action="new_student" method="post">
+		 	{% csrf_token %}
+	      <input type="text" id="login" class="input-field" name="name" placeholder="Name" required>
+	      <input type="text" id="password" class="input-field" name="roll_no" placeholder="Roll number" required>
+	      <input type="submit" class="submit-btn" value="ADD">
+	    </form>
+	  </section>
+   
+    <section>
+			<table class="table-stu">
+			  <tr>
+			    <th>Roll no</th>
+			    <th>Name</th>
+			  </tr>
+				{% for stu in Stu %}
+			  <tr>
+			    <td>{{stu.roll_no}}</td>
+			    <td>{{stu.name}}</td>
+			    {% endfor %}
+			  </tr>
+			</table>
+		</section>
+</body>
+</html>
+
